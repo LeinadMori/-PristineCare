@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <link rel="icon" type="image/png" href="./images/image.png">
+    <link rel="stylesheet" href="Styles/signin.css"> 
+</head>
+<body>
+    <div class="contaner">
+        <form action="" method="post" id="registrationForm">
+            <h2>Registration</h2>
+            <div class="content">
+                <div class="input-box">
+                    <label for="name">Full name</label>
+                    <input type="text" placeholder="Enter full name" name="name" id="fullName" required>  
+                </div>
+
+                <div class="input-box">
+                    <label for="username">Username</label>
+                    <input type="text" placeholder="Enter user name" name="uname" id="username" required>  
+                </div>
+
+                <div class="input-box">
+                    <label for="email">E-mail</label>
+                    <input type="email" placeholder="Enter your valid e-mail address" name="email" id="email" required>  
+                </div>
+
+                <div class="input-box">
+                    <label for="phone">Phone number</label>
+                    <input type="tel" placeholder="Enter phone number" name="phone" id="phone" required>  
+                </div>
+
+                <div class="input-box">
+                    <label for="password">Password</label>
+                    <input type="password" placeholder="Enter new password" name="password" id="password" required>  
+                </div>
+
+                <div class="input-box">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" placeholder="confirm your password" name="confirmpassword" id="confirmPassword" required>  
+                </div>
+
+                <span class="gender-title">Gender</span>
+                <div class="gender-category">
+                    <input type="radio" name="gender" id="male" required>
+                    <label for="male">Male</label>
+
+                    <input type="radio" name="gender" id="female">
+                    <label for="female">Female</label>
+                </div>
+            </div>
+            <div class="alert">
+                <p>By clicking signup, you have agreed to our <a href="#">Terms,</a> <a href="#">privacy policies </a> and 
+                    <a href="#">cookies policies.</a> you may receive sms notification from us and can opt out at any time.
+                </p>
+            </div>
+            <div class="button-container">
+                <button type="submit">Register</button>
+            </div>
+
+            <div class="register-link">
+                <p>Already have an account?  <a href="login.html">login now !</a></p>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('registrationForm');
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const fullName = document.getElementById('fullName').value;
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                
+                // Basic validation
+                if (!fullName.trim()) {
+                    alert('Please enter your full name');
+                    return;
+                }
+        
+                // Email validation
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    alert('Please enter a valid email address');
+                    return;
+                }
+        
+                // Phone validation
+                const phoneRegex = /^\d{11}$/;
+                if (!phoneRegex.test(phone.replace(/[-\s]/g, ''))) {
+                    alert('Please enter a valid 11-digit phone number');
+                    return;
+                }
+        
+                // Password validation
+                if (password.length < 6) {
+                    alert('Password must be at least 6 characters long');
+                    return;
+                }
+        
+                if (password !== confirmPassword) {
+                    alert('Passwords do not match');
+                    return;
+                }
+        
+                // Get initials from full name
+                const initials = fullName
+                    .split(' ')
+                    .map(word => word.charAt(0))
+                    .join('')
+                    .toUpperCase();
+                
+                // Store user data in local storage
+                localStorage.setItem('userInitials', initials);
+                localStorage.setItem('userName', fullName);
+                localStorage.setItem('userEmail', email);
+                
+                // Show success message
+                alert(`Registration successful!\n\nThank you ${fullName} for registering with us. We'll send a confirmation email to ${email} shortly.`);
+                
+                // Clear the form
+                form.reset();
+        
+                // Redirect to home page after successful registration
+                setTimeout(() => {
+                    window.location.href = 'home.html';
+                }, 1000);
+            });
+        });
+    </script>
+    
+</body>
+</html>

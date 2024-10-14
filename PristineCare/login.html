@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Login</title>
+    <link rel="icon" type="image/png" href="./images/image.png">
+    <link rel="stylesheet" href="Styles/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="container">
+        <h2>Member Login</h2>
+        <form id="login-form">
+            <div class="content">
+                <div class="input-box">
+                    <label for="email">Enter your email</label>
+                    <span class="icon">
+                        <i class="fas fa-envelope"></i>
+                    </span>
+                    <input type="email" id="email" aria-label="Email" required>
+                </div>
+    
+                <div class="input-box">
+                    <label for="password">Enter your password</label>
+                    <span class="icon">
+                        <i class="fas fa-lock"></i>
+                    </span>
+                    <input type="password" id="password" aria-label="Password" required>
+                </div>
+            </div>
+    
+            <div class="remember-forget">
+                <label><input type="checkbox" aria-label="Remember me"> Remember me</label>
+                <a href="forgot-password.html">Forgot Password?</a>
+            </div>
+    
+            <div class="button-container">
+                <button type="submit" id="signInButton">Log in</button>
+            </div>
+            
+            <div class="register-link">
+                <p>Don't have an account? 
+                    <a href="signin.html" id="signupLink" class="signup-button" aria-label="Signup" aria-haspopup="true" aria-expanded="false">
+                      Signup now!
+                    </a>
+                </p>
+                  
+                <!-- Dropdown menu -->
+                <div id="dropdownMenu" class="dropdown-menu" aria-expanded="false" style="display: none;">
+                    <a href="signup.html" class="dropdown-item personal">Personal</a>
+                    <a href="signin.html" class="dropdown-item organizational">Organizational</a>
+                </div>
+                
+            </div>            
+        </form>
+    </div>
+
+    <!-- JavaScript for dropdown toggle -->
+    <script>
+        document.getElementById('signupLink').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default link behavior
+    
+            // Toggle dropdown visibility
+            const dropdownMenu = document.getElementById('dropdownMenu');
+            const isExpanded = dropdownMenu.style.display === 'block';
+    
+            // Toggle dropdown menu display
+            dropdownMenu.style.display = isExpanded ? 'none' : 'block';
+    
+            // Update aria-expanded attribute
+            this.setAttribute('aria-expanded', !isExpanded);
+        });
+    
+        // Close dropdown if clicking outside
+        document.addEventListener('click', function(event) {
+            const signupLink = document.getElementById('signupLink');
+            const dropdownMenu = document.getElementById('dropdownMenu');
+            
+            // Check if the click is outside the dropdown and the signup link
+            if (!signupLink.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                // Hide the dropdown if it's visible
+                if (dropdownMenu.style.display === 'block') {
+                    dropdownMenu.style.display = 'none';
+                    signupLink.setAttribute('aria-expanded', 'false'); // Update aria-expanded to false
+                }
+            }
+        });
+
+
+        // Handle form submission
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting
+
+            // Get email and password values
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Simple check: Ensure fields are not empty
+            if (email && password) {
+                // Simulate successful login and redirect to the home page
+                window.location.href = 'home.html'; // Redirect to the home page
+            } else {
+                alert('Please enter both email and password.');
+            }
+        });
+    </script>
+    
+</body>
+</html>

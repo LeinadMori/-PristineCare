@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>organisation-signup</title>
+    <link rel="icon" type="image/png" href="./images/image.png">
+    <link rel="stylesheet" href="Styles/signup2.css">
+</head>
+<body>
+    <div class="container">
+        <form action="" method="post">
+            <h2>Registration</h2>
+            <div class="content">
+                <div class="input-box">
+                    <label for="organization-name">Organization Name:</label>
+                    <input type="text" id="organization-name" name="organization-name" required>
+                </div>
+    
+                <div class="input-box">
+                    <label for="contact-person">Contact Person:</label>
+                    <input type="text" id="contact-person" name="contact-person">
+                </div>
+    
+                <div class="input-box">
+                    <label for="contact-information">Contact Information:</label>
+                    <input type="text" id="contact-information" name="contact-information">
+                </div>
+    
+                <div class="input-box">
+                    <label for="organization-type">Organization Type:</label>
+                    <input type="text" id="organization-type" name="organization-type">
+                </div>
+    
+                <div class="input-box">
+                    <label for="industry">Industry:</label>
+                    <input type="text" id="industry" name="industry">
+                </div>
+    
+                <div class="input-box">
+                    <label for="contact-info-support">Contact Information and Support:</label>
+                    <textarea id="contact-info-support" name="contact-info-support" rows="4"></textarea>
+                </div>
+            </div>
+    
+            <div class="button-container">
+                <button type="submit">Register</button>
+            </div>
+
+            <div class="alert">
+                <p>By clicking signup, you have agreed to our <a href="#">Terms,</a> <a href="#">privacy policies </a> and 
+                    <a href="#">cookies policies.</a> you may receive sms notification from us and can opt out at any time.
+                </p>
+            </div>
+    
+            <div class="register-link">
+                <p>Already have an account? <a href="login.html">Login now!</a></p>
+            </div>
+        </form>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('form');
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault(); // Prevent the default form submission
+                
+                // Get form data
+                const organizationName = document.getElementById('organization-name').value;
+                const contactPerson = document.getElementById('contact-person').value;
+                
+                // Basic validation
+                if (!organizationName.trim()) {
+                    alert('Please enter an organization name');
+                    return;
+                }
+                
+                // Show success message
+                alert(`Registration successful!\n\nThank you ${organizationName} for registering with us. We'll contact ${contactPerson} shortly with further details.`);
+                
+                // Clear the form
+                form.reset();
+        
+                // Redirect to index.html
+                setTimeout(() => {
+                    window.location.href = 'home.html';
+                }, 1000); // Redirect after 1 second
+            });
+        });
+        </script>
+</body>
+</html>

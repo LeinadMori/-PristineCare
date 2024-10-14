@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PristineCare - Appointment</title>
+    <link rel="stylesheet" href="Styles/form.css">
+    <link rel="icon" type="image/png" href="./images/image.png">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Cleaning Service Request Form</h1>
+        <p>Please fill out this form to request a cleaning service from PristineCare. We'll contact you shortly to schedule an appointment.</p>
+
+        <form id="cleaningServiceForm" action="/submit" method="POST">
+            <!-- Contact Information -->
+            <fieldset>
+                <legend>Contact Information</legend>
+
+                <label for="name">Name (Required):</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email (Required):</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">Phone Number (Required):</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="address">Address (Optional):</label>
+                <input type="text" id="address" name="address">
+            </fieldset>
+
+            <!-- Cleaning Service Details -->
+            <fieldset>
+                <legend>Cleaning Service Details</legend>
+
+                <label for="cleaningType">Type of Cleaning (Required):</label>
+                <select id="cleaningType" name="cleaningType" required>
+                    <option value="">Select...</option>
+                    <option value="residential">Residential</option>
+                    <option value="commercial">Commercial</option>
+                    <option value="deepCleaning">Deep Cleaning</option>
+                    <option value="moveInOut">Move-In/Out</option>
+                </select>
+
+                <label for="spaceSize">Size of the Space (Optional):</label>
+                <input type="text" id="spaceSize" name="spaceSize" placeholder="e.g., Small apartment, Large office">
+
+                <label for="specificRequirements">Specific Requirements (Optional):</label>
+                <textarea id="specificRequirements" name="specificRequirements" rows="4"></textarea>
+            </fieldset>
+
+            <!-- Scheduling -->
+            <fieldset>
+                <legend>Scheduling</legend>
+
+                <label for="preferredDate">Preferred Date:</label>
+                <input type="date" id="preferredDate" name="preferredDate" required>
+
+                <label for="preferredTime">Preferred Time:</label>
+                <input type="time" id="preferredTime" name="preferredTime" required>
+
+                <label for="availability">Availability:</label>
+                <input type="text" id="availability" name="availability" placeholder="e.g., Monday-Friday, 9 AM - 5 PM">
+            </fieldset>
+
+            <!-- Additional Questions -->
+            <fieldset>
+                <legend>Additional Questions</legend>
+
+                <label>Previous Cleaning Experience:</label>
+                <label><input type="radio" name="experience" value="yesOurService"> Yes, I've used your service before</label>
+                <label><input type="radio" name="experience" value="yesOtherService"> Yes, I've used another service</label>
+                <label><input type="radio" name="experience" value="no"> No, this is my first time</label>
+
+                <label for="petInfo">Pets on Premises (Optional):</label>
+                <select id="petInfo" name="petInfo">
+                    <option value="">Select...</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+
+                <label for="specialInstructions">Special Instructions (Optional):</label>
+                <textarea id="specialInstructions" name="specialInstructions" rows="4"></textarea>
+            </fieldset>
+
+            <!-- Terms and Conditions -->
+            <fieldset>
+                <legend>Terms and Conditions</legend>
+                <p>By submitting this form, you agree to our <a href="/terms-and-conditions" target="_blank">terms and conditions</a>.</p>
+                <label><input type="checkbox" id="agree" name="agree" required> I agree to the terms and conditions</label>
+            </fieldset>
+
+            <!-- Submit Button -->
+            <button type="submit">Submit Request</button>
+        </form>
+    </div>
+
+    <script src="./js/form.js"></script>
+</body>
+</html>
