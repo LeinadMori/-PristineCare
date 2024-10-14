@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+:root {
+    --big-colour:#3f5097;
+    --second-colour:#f69400;
+    --text-colour:#ffffff;
+    --text-colour2:#333333;
+    --text-colour3:#828282;
+    --about-colour:#f59E3E;
+    --seclect-colour: #3f5c9715;
+    --log-colour:#380036 ;
+    --log-colour2:#0CBABA;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    max-width: 60.5rem;
+    padding: 2rem;
+    margin: 0 2rem;
+    margin-top: 2rem;
+    border-radius: 1rem;
+    background: var(--about-colour);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    font-size: 2.6rem;
+    font-weight: bold;
+    text-align: left;
+    color: var(--text-colour);
+    padding-bottom: 1rem;
+    border-bottom: .1rem solid silver;
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 2rem 0;
+}
+
+.input-box {
+    width: 48%;
+    padding: 1.5rem;
+}
+
+.input-box label {
+    color: var(--text-colour);
+    font-weight: bold;
+    margin-bottom: .5rem;
+    display: block;
+}
+
+.input-box input,
+.input-box textarea {
+    height: 4rem;
+    width: 100%;
+    padding: 0 1rem;
+    border-radius: .5rem;
+    border: .1rem solid var(--text-colour);
+    outline: none;
+}
+
+.input-box textarea {
+    resize: vertical;
+    min-height: 6rem;
+}
+
+.input-box input:focus,
+.input-box textarea:focus,
+.input-box input:valid,
+.input-box textarea:valid {
+    box-shadow: 0 .3rem .6rem rgba(0, 0, 0, 0.1);
+}
+
+.button-container {
+    margin-top: 2rem;
+}
+
+.button-container button {
+    width: 100%;
+    padding: 1rem;
+    font-size: 2rem;
+    color: var(--text-colour);
+    border: none;
+    border-radius: .5rem;
+    cursor: pointer;
+    transition: 0.3s;
+    background: var(--big-colour);
+}
+
+.button-container button:hover {
+    color: var(--text-colour3);
+}
+
+.register-link {
+    margin-top: 2rem;
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+.register-link a {
+    color: var(--text-colour2);
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+    color: var(--log-colour);
+}
