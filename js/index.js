@@ -16,20 +16,20 @@ document.querySelectorAll('.appointment-button').forEach(button => {
 
 function checkLoginStatus() {
     // Placeholder for actual login status check
-    return false;
+    return false; // Change this to true if the user is logged in
 }
 
+// Toggle signup dropdown menu
 document.addEventListener('DOMContentLoaded', function() {
-    var signupButton = document.querySelector('.signup-button');
-    var dropdownMenu = document.querySelector('#dropdownMenu');
-    var personalItem = document.querySelector('#dropdownMenu .dropdown-item.personal');
-    var organizationalItem = document.querySelector('#dropdownMenu .dropdown-item.organizational');
+    const signupButton = document.querySelector('.signup-button');
+    const dropdownMenu = document.querySelector('#dropdownMenu');
+    const personalItem = document.querySelector('#dropdownMenu .dropdown-item.personal');
+    const organizationalItem = document.querySelector('#dropdownMenu .dropdown-item.organizational');
 
     if (signupButton && dropdownMenu) {
         signupButton.addEventListener('click', function() {
             // Toggle the display of the dropdown menu
-            var isExpanded = dropdownMenu.style.display === 'block';
-            dropdownMenu.style.display = isExpanded ? 'none' : 'block';
+            dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
         });
     }
 
@@ -46,17 +46,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-
 // Function for Sign In button to show form details
 document.getElementById('signInButton').addEventListener('click', function() {
-    var form = document.querySelector('form');
-    var dropdownMenu = document.getElementById('dropdownMenu');
+    const form = document.querySelector('form');
+    const dropdownMenu = document.getElementById('dropdownMenu');
     dropdownMenu.style.display = 'none'; // Hide the dropdown menu if visible
-    if (form.style.display === 'none' || form.style.display === '') {
-        form.style.display = 'block';
-    } else {
-        form.style.display = 'none';
-    }
+    form.style.display = form.style.display === 'none' || form.style.display === '' ? 'block' : 'none';
 });
 
 // Scroll banner at the top
@@ -65,18 +60,18 @@ document.addEventListener('DOMContentLoaded', function() {
     if (leftDiv) {
         leftDiv.style.transition = 'all 35s ease';
         leftDiv.style.transform = 'translateX(100px)';
-        leftDiv.style.opacity = '4';
+        leftDiv.style.opacity = '1'; // Set opacity to 1 instead of 4
     }
 });
 
 // Initial login setup
 function setUserInitials(name) {
-    var initials = name.split(' ').map(word => word.charAt(0)).join('').toUpperCase();
+    const initials = name.split(' ').map(word => word.charAt(0)).join('').toUpperCase();
     document.getElementById("userAvatar").innerHTML = `<div class="user-initial">${initials}</div>`;
 }
 
 function loginUser() {
-    var username = prompt("Enter your username:");
+    const username = prompt("Enter your username:");
     if (username) {
         setUserInitials(username);
     }
@@ -86,19 +81,23 @@ function logout() {
     document.getElementById("userAvatar").innerHTML = '';
 }
 
-// Handle form submission
+// Handle form submission for login
 document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("loginForm").addEventListener("submit", function(event) {
-        event.preventDefault();
-        var username = document.getElementById("email").value;
-        var password = document.getElementById("password").value;
-        if (username === "exampleuser" && password === "examplepassword") {
-            alert("Login successful!");
-        } else {
-            document.getElementById("errorMessage").innerText = "Invalid username or password.";
-            document.getElementById("errorMessage").style.display = "block";
-        }
-    });
+    const loginForm = document.getElementById("loginForm");
+    if (loginForm) {
+        loginForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+            const username = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            if (username === "exampleuser" && password === "examplepassword") {
+                alert("Login successful!");
+                setUserInitials(username); // Set user initials on successful login
+            } else {
+                document.getElementById("errorMessage").innerText = "Invalid username or password.";
+                document.getElementById("errorMessage").style.display = "block";
+            }
+        });
+    }
 });
 
 // Testimonial section scroll
@@ -128,25 +127,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Display success message on contact form submission
 document.addEventListener("DOMContentLoaded", function() {
-    var form = document.querySelector('.contact-form form');
-    if (form) {
-        form.addEventListener('submit', function(event) {
+    const contactForm = document.querySelector('.contact-form form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(event) {
             event.preventDefault();
             alert("Your message has been submitted successfully!");
-            form.reset();
+            contactForm.reset();
         });
     }
 });
 
 // Newsletter subscription form functionality
 document.addEventListener("DOMContentLoaded", function() {
-    var form = document.getElementById('email-form');
-    var emailInput = document.getElementById('footer-email');
+    const newsletterForm = document.getElementById('email-form');
+    const emailInput = document.getElementById('footer-email');
 
-    if (form && emailInput) {
-        form.addEventListener('submit', function(event) {
+    if (newsletterForm && emailInput) {
+        newsletterForm.addEventListener('submit', function(event) {
             event.preventDefault();
-            var email = emailInput.value.trim();
+            const email = emailInput.value.trim();
             if (validateEmail(email)) {
                 alert("You have successfully subscribed to our newsletter!");
                 emailInput.value = '';
@@ -154,11 +153,11 @@ document.addEventListener("DOMContentLoaded", function() {
                 alert("Please enter a valid email address.");
             }
         });
+    }
 
-        function validateEmail(email) {
-            var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return re.test(String(email).toLowerCase());
-        }
+    function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(String(email).toLowerCase());
     }
 });
 
@@ -166,12 +165,12 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener('DOMContentLoaded', function() {
     const validEmail = "example@example.com";
     const validPassword = "password123";
-    const form = document.querySelector('form');
+    const loginForm = document.querySelector('form');
     const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');
 
-    if (form && emailInput && passwordInput) {
-        form.addEventListener('submit', (event) => {
+    if (loginForm && emailInput && passwordInput) {
+        loginForm.addEventListener('submit', (event) => {
             event.preventDefault();
             const enteredEmail = emailInput.value;
             const enteredPassword = passwordInput.value;
@@ -181,6 +180,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 alert('Wrong password!');
             } else {
                 alert('Login successful!');
+                setUserInitials(enteredEmail.split('@')[0]); // Set initials from the email
             }
         });
     }
